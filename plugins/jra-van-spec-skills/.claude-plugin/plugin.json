@@ -7,6 +7,6 @@
     "url": "https://github.com/KeibaLensProject"
   },
   "repository": "https://github.com/KeibaLensProject/keibalens-jv-assistant",
-  "keywords": ["jra-van", "jv-data", "jv-link", "keiba", "horse-racing", "csharp", "shift_jis"],
-  "skills": ["./skills/jra-van-spec-skills"]
+  "license": "MIT",
+  "keywords": ["jra-van", "jv-data", "jv-link", "keiba", "horse-racing", "csharp", "shift_jis"]
 }

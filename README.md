@@ -95,13 +95,14 @@ copilot plugin install KeibaLensProject/keibalens-jv-assistant:plugins/jra-van-s
 
 ```text
 keibalens-jv-assistant/
-├─ .github/plugin/
-│  └─ marketplace.json                 # マーケットプレイス定義（source = plugins/jra-van-spec-skills）
+├─ .claude-plugin/
+│  └─ marketplace.json                 # マーケットプレイス定義（GHC / Claude 共通・source = ./plugins/jra-van-spec-skills）
 └─ plugins/
    └─ jra-van-spec-skills/             # ← プラグイン本体（インストール時はここが配布される）
-      ├─ plugin.json                   #   プラグイン マニフェスト（skills を宣言）
+      ├─ .claude-plugin/
+      │  └─ plugin.json                #   プラグイン マニフェスト（GHC / Claude 共通）
       └─ skills/
-         └─ jra-van-spec-skills/       #   スキル本体（自己完結）
+         └─ jra-van-spec-skills/       #   スキル本体（自己完結・既定の skills/ から自動発見）
             ├─ SKILL.md                #     発火条件＆参照ルーティング
             └─ references/
                ├─ record-index.md      #       全 38 レコード 統合早見表
@@ -126,8 +127,8 @@ keibalens-jv-assistant/
 | **GitHub Copilot CLI** | `/plugin marketplace add` → `/plugin install`（上記） |
 | **Claude Code** | 同じ `/plugin` コマンド体系（marketplace add → install）に対応 |
 
-標準的なプラグイン マニフェスト（`marketplace.json` ＋ `plugin.json` ＋ `SKILL.md`）形式のため、
-互換のプラグイン機構を持つエージェントで利用できます。
+標準的なプラグイン マニフェスト（`.claude-plugin/marketplace.json` ＋ `.claude-plugin/plugin.json` ＋ `skills/<name>/SKILL.md`）形式のため、
+GitHub Copilot CLI と Claude Code の両方でそのまま利用できます。
 
 ---
 

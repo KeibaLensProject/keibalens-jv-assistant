@@ -37,7 +37,7 @@ EVALS = [
 ]
 
 base = Path(__file__).resolve().parent  # eval/ ディレクトリ（このスクリプトと同じ場所）
-tpl_path = Path(r"C:\Users\moroz\.copilot\installed-plugins\anthropic-agent-skills\example-skills\skills\skill-creator\assets\eval_review.html")
+tpl_path = base / "assets" / "eval_review.html"  # プロジェクト内テンプレート
 
 # write evals.json (skill-creator schema: array of {query, should_trigger})
 evals_simple = [{"query": e["query"], "should_trigger": e["should_trigger"]} for e in EVALS]
