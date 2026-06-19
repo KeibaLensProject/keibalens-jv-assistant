@@ -1,0 +1,23 @@
+{
+  "skill_name": "jra-van-spec-skills",
+  "iteration": 2,
+  "description_under_test": "current (unchanged baseline, ~560 chars)",
+  "eval_set": "trigger_eval_hard.json",
+  "method": "3 independent general-purpose sub-agent judges, name+description only, 20 adversarial near-miss queries, majority vote",
+  "judges": 3,
+  "queries": 20,
+  "results": {
+    "should_trigger": {"count": 10, "trigger_rate": 1.0, "note": "all 10 triggered by all 3 judges (30/30), incl. #1 non-C# Python parse and #3 NAR scope"},
+    "should_not_trigger": {"count": 10, "false_trigger_rate": 0.0, "note": "all 10 correctly NOT triggered (0/30), incl. hardest: #15 MySQL index, #16 JV-Link download, #19 generic COM, #20 live race values"},
+    "overall_accuracy": 1.0,
+    "unanimous": true
+  },
+  "hardest_cases_verified": {
+    "#1_python_parse": "triggered (record layout is language-agnostic; C#-centric wording did not suppress)",
+    "#8_vs_#20_same_keyword": "RA発走時刻 FORMAT spec triggered; live 発走時刻 VALUE lookup did not — opposite intent correctly separated",
+    "#15_mysql_index": "not triggered (generic DB tuning, despite JV-Data storage context)",
+    "#16_jvlink_download": "not triggered (software acquisition, not API spec)",
+    "#19_generic_com": "not triggered (generic COM interop, not JV-Link)"
+  },
+  "conclusion": "Description is robust under adversarial stress: 100% accuracy on hard near-misses with no false positives and no false negatives. No description change is warranted; finalize the current description as-is."
+}

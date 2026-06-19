@@ -1,0 +1,19 @@
+{
+  "name": "keibalens-jv-assistant",
+  "owner": {
+    "name": "KeibaLensProject"
+  },
+  "metadata": {
+    "description": "JRA-VAN Data Lab. の JV-Data 仕様と JV-Link COM API を解説する Agent Skill を提供するマーケットプレイス。",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "jra-van-spec-skills",
+      "description": "JRA-VAN の JV-Data レコードフォーマット/コード表と JV-Link COM API(メソッド・エラーコード・dataspec・option・ファイル名規則)、C# 固定長 Shift_JIS パース手法を、変換済みドキュメント references/spec/ を一次資料として正確に答えるスキル。",
+      "version": "1.0.0",
+      "source": "plugins/jra-van-spec-skills",
+      "strict": false
+    }
+  ]
+}

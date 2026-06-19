@@ -1,0 +1,23 @@
+{
+  "skill_name": "jra-van-spec-skills",
+  "iteration": 1,
+  "description_under_test": "current (baseline, ~560 chars)",
+  "method": "3 independent general-purpose sub-agent judges, name+description only, 20-query eval set (10 should-trigger / 10 should-not), majority vote",
+  "judges": 3,
+  "queries": 20,
+  "results": {
+    "should_trigger": {
+      "count": 10,
+      "trigger_rate": 1.0,
+      "note": "all 10 triggered by all 3 judges (30/30)"
+    },
+    "should_not_trigger": {
+      "count": 10,
+      "false_trigger_rate": 0.0,
+      "note": "all 10 correctly NOT triggered by all 3 judges (0/30)"
+    },
+    "overall_accuracy": 1.0,
+    "unanimous": true
+  },
+  "conclusion": "Baseline description already at ceiling (100%) on an adversarial eval with keyword-overlapping near-misses. No failing cases exist to drive description improvement, so the improve-loop has nothing to optimize against. Recommend keeping the current description as-is."
+}

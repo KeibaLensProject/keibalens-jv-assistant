@@ -1,0 +1,12 @@
+{
+  "name": "jra-van-spec-skills",
+  "description": "JRA-VAN の JV-Data 仕様(レコードフォーマット/コード表)と JV-Link COM API(メソッド・エラーコード・dataspec・option・ファイル名規則)、C# 固定長 Shift_JIS パース手法を、変換済み references/spec/ を一次資料として正確に回答するスキル。",
+  "version": "1.0.0",
+  "author": {
+    "name": "KeibaLensProject",
+    "url": "https://github.com/KeibaLensProject"
+  },
+  "repository": "https://github.com/KeibaLensProject/keibalens-jv-assistant",
+  "keywords": ["jra-van", "jv-data", "jv-link", "keiba", "horse-racing", "csharp", "shift_jis"],
+  "skills": ["./skills/jra-van-spec-skills"]
+}

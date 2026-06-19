@@ -1,0 +1,8 @@
+# Python 仮想環境（マシン依存・配布不要）
+.venv/
+__pycache__/
+*.pyc
+
+# 仕様書の元ファイルはローカル配置（ディレクトリのみ .gitkeep で追跡）
+context/*
+!context/.gitkeep

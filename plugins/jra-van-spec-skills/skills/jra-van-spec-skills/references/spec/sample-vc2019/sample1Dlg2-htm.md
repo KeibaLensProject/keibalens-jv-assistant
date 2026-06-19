@@ -1,0 +1,45 @@
+# sample1Dlg2.htm
+
+出典: `context/sample1_VC2019/sample1Dlg2.htm`
+
+```html
+<HTML>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=shift_jis">
+<BODY ID=Csample1Dlg2 BGCOLOR=LIGHTGREY>
+
+<TABLE WIDTH=100%>
+<TR>
+<TD ALIGN=RIGHT>
+<BUTTON STYLE="WIDTH:100" ID="ButtonOK">OK</BUTTON><BR>
+<BUTTON STYLE="WIDTH:100" ID="ButtonCancel">キャンセル</BUTTON>
+</TD>
+</TR>
+<TR WIDTH=100% HEIGHT=75>
+<TD ALIGN=CENTER VALIGN=BOTTOM>
+TODO: コントロールをここに置く
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML><HTML>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=shift_jis">
+<BODY ID=Csample1Dlg2 BGCOLOR=LIGHTGREY>
+
+<TABLE WIDTH=100%>
+<TR>
+<TD ALIGN=RIGHT>
+<BUTTON STYLE="WIDTH:100" ID="ButtonOK">OK</BUTTON><BR>
+<BUTTON STYLE="WIDTH:100" ID="ButtonCancel">キャンセル</BUTTON>
+</TD>
+</TR>
+<TR WIDTH=100% HEIGHT=75>
+<TD ALIGN=CENTER VALIGN=BOTTOM>
+TODO: コントロールをここに置く
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>
+```

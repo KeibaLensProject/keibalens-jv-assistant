@@ -1,0 +1,22 @@
+[
+  {"id":1,"query":"JV-DataのレコードをPythonのstructで読もうとしてる。SEレコードの固定長レイアウト(各項目のバイト数)が知りたい。言語はC#じゃないけどフォーマット自体は同じだよね？","should_trigger":true,"note":"非C#でもJV-Dataレイアウトが必要=発火すべき(C#中心の記述で誤って弾かないか)"},
+  {"id":2,"query":"0B12って何のデータだっけ？","should_trigger":true,"note":"dataspec ID の素朴な確認"},
+  {"id":3,"query":"JV-Dataって地方競馬(NAR)のレースも同じ仕様で取れる？それともJRAのみ？","should_trigger":true,"note":"JV-Dataの対象範囲=仕様境界の質問"},
+  {"id":4,"query":"JVReadで1回読むと1レコード返ってくる認識だけど、バッファ末尾に改行やNULLは入る？レコード長ぴったり？","should_trigger":true,"note":"JV-Link読み出しの挙動"},
+  {"id":5,"query":"WIN5の対象レースと払戻金ってどのレコード種別に入ってる？","should_trigger":true,"note":"払戻系レコードの所在"},
+  {"id":6,"query":"馬体重とその増減ってSEレコードに入ってる？何バイト目か知りたい","should_trigger":true,"note":"SEレコードの項目・バイト位置"},
+  {"id":7,"query":"速報系の0B30番台って何日前までさかのぼって取れる？保持期間が知りたい","should_trigger":true,"note":"提供タイミング/保持期間"},
+  {"id":8,"query":"RAレコードの発走時刻、フォーマットはHHMMで時刻はJST？","should_trigger":true,"note":"RAレコードの項目フォーマット"},
+  {"id":9,"query":"JVOpenのoptionの1と2と3と4の違いをちゃんと整理したい。セットアップと通常更新の使い分け","should_trigger":true,"note":"JVOpen optionの意味"},
+  {"id":10,"query":"JV-Linkが落としてくるデータファイルの命名規則、ファイル名から日付やデータ種別って判別できる？","should_trigger":true,"note":"ファイル名規則"},
+  {"id":11,"query":"JRA-VAN Data Labの月額っていくら？契約方法と支払い方法を教えて","should_trigger":false,"note":"罠:JRA-VAN Data Labだが料金/契約=仕様外"},
+  {"id":12,"query":"競馬のオッズって単勝・複勝・馬連・ワイドとか色々あるけど違いを初心者向けに説明して","should_trigger":false,"note":"罠:オッズ/馬連だが一般的な馬券の説明"},
+  {"id":13,"query":"TARGET frontier JVでJV-Data取り込んだあと、自動更新のスケジュール設定ってどうやるの？","should_trigger":false,"note":"罠:JV-Dataだが他社ソフトの操作方法"},
+  {"id":14,"query":"JRA公式サイトのレース結果ページのHTMLから走破タイムを正規表現で抜き出したい。Pythonで","should_trigger":false,"note":"罠:レース結果/タイムだがJRAサイトのスクレイピング"},
+  {"id":15,"query":"取り込んだレース結果をMySQLに入れてる。検索が遅いんだけど、どのカラムにインデックス張ればいい？クエリチューニングの一般論で","should_trigger":false,"note":"罠:JV-Data保存だが汎用DBチューニング"},
+  {"id":16,"query":"JV-Linkって今どこからダウンロードしてインストールするの？最新版の入手先を知りたい","should_trigger":false,"note":"罠:JV-Linkだが入手/インストールでAPI仕様でない"},
+  {"id":17,"query":"EveryDB2でデータ取得が途中で止まる。ログにタイムアウトって出てる。どう直す？","should_trigger":false,"note":"罠:データ取得だが他社ソフトの不具合対応"},
+  {"id":18,"query":"ディープインパクト産駒の特徴と、配合理論でニックスって何か教えて","should_trigger":false,"note":"罠:競馬だが血統・配合理論の雑談"},
+  {"id":19,"query":"C#で任意のCOMコンポーネントを遅延バインディングで呼ぶ方法、Type.GetTypeFromProgIDの使い方を教えて","should_trigger":false,"note":"罠:C#/COMだがJV-Link無関係の汎用COM"},
+  {"id":20,"query":"今日の東京競馬場、第11レースの発走時刻と出走頭数を教えて","should_trigger":false,"note":"罠:#8と同じ発走時刻だが実値の問い合わせ(仕様でない)"}
+]
