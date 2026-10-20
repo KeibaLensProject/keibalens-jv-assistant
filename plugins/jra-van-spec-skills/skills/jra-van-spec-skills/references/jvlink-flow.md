@@ -19,6 +19,17 @@ SDK Ver.5.0.0（2026年8月公開）より、従来の 32bit(x86) 版に加え�
 | **JV-Link 設定画面** | Ver.5.0.0 では JV-Link Agent が停止している場合でも設定画面を実行でき、設定画面から Agent の「起動」「停止」を実行できるボタンが追加された |
 | **保存パス (`m_savepath`)** | `JVSetSavePath` / 設定画面で指定するのは `cache` と `data` が作られる親フォルダ。32bit版と 64bit版を併用する場合は、別々の Agent によるファイル競合を避けるため保存先フォルダを分けるのが安全 |
 
+### 32bit版 と 64bit版 の開発・配布物比較 (SDK Ver.5.0.0)
+
+| 観点 | 32bit版 (`JVDTLABSDK500_32bit.zip`) | 64bit版 (`JVDTLABSDK500_64bit.zip`) |
+|---|---|---|
+| **呼び出しプロセスの bit 数** | **x86 (32bit)** プロセスから呼び出す（C# は `PlatformTarget=x86`、Python は 32bit Python） | **x64 (64bit)** プロセスから呼び出す（C# は `PlatformTarget=x64`、Python は 64bit Python） |
+| **`AnyCPU` ビルド時の注意** | 64bit OS 上の `AnyCPU`（32ビット優先なし）は 64bit プロセスとして起動するため、32bit版 JV-Link には接続できない（`REGDB_E_CLASSNOTREG`）。32bit版を使うなら明示的に `x86` を指定する | 64bit版を使うなら明示的に `x64` を指定する。両方に対応するアプリでは x86 ワーカーと x64 ワーカーを分けると確実に切り分けられる |
+| **JV-Data / JV-Link 仕様書** | `JV-Data仕様書_4.9.0.1` / `JV-Linkインターフェース仕様書_4.9.0.1`（32bit/64bit で完全同一） | 同左（レコード長・バイト位置・メソッド引数・戻り値すべて 32bit/64bit 共通） |
+| **同梱構造体定義** | C# (`JVData_Struct.cs`), C++ (`JVData_Structure.h`), VB (`JVData_Structure.vb`) ※いずれも 2009年版 | 左記3種 ＋ **Python (`JVData_Struct.py`, 2026-07-31 更新・4.9.0.1 最新オフセット準拠)** |
+| **同梱サンプル / 開発ガイド** | `sample1_VB2019`, `sample1_VC2019` / 開発ガイド `4.2.2`（VS2019 ベース）、イベント C++/VB | `sample1_VB2026`, `sample1_VC2026`, **`sample1_Python3.14`** / 開発ガイド `4.2.3`（VS2026・x64設定追記）、イベント C++(4.0.0)/VB/**Python(1.0.0)** |
+| **検証ツール (Ver.2.7.0)** | `Setup.msi`（32bit版） | `Setup_x64.msi`（64bit版、32bit版と同一端末に共存インストール可） |
+
 ## 蓄積系(過去・差分データ): JVOpen
 
 ```

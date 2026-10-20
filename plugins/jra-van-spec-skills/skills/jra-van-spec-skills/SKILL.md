@@ -1,16 +1,16 @@
 ---
 name: jra-van-spec-skills
 description: >-
-  JRA-VAN Data Lab. の JV-Data 仕様と JV-Link COM API の参照ガイド。JV-Data の
+  JRA-VAN Data Lab. の JV-Data 仕様と JV-Link COM API (Ver.5.0.0 32bit版/64bit版) の参照ガイド。JV-Data の
   レコードフォーマット(項目の位置・バイト数・初期値・繰返し)、コード表(競馬場/馬場状態/競走種別/
   グレード等)、JV-Link のメソッド(JVInit/JVOpen/JVRTOpen/JVRead/JVGets/JVStatus/JVClose 等)・
-  戻り値(エラー)コード・データ種別ID(dataspec)・option・ファイル名規則、C# 構造体定義と
-  固定長 Shift_JIS レコードのパース手法を、変換済みドキュメントから探して正確に答える。
-  JRA-VAN・JV-Data・JV-Link・競馬データの取得/解析・C# 実装に関する質問では必ずこのスキルを使うこと。
-  レコードの項目位置やバイト数、コードの意味、JVOpen の dataspec/option の指定、エラーコードの意味、
-  馬毎レース情報(SE)・レース詳細(RA)・払戻(HR)・オッズ(O1〜O6)・票数(H1/H6)・各マスタの構造を
-  聞かれたら、推測せず必ずこのスキルで変換済みドキュメントを参照して回答すること。keibalens など競馬予想ソフトの
-  データ取り込み実装でも使う。
+  戻り値(エラー)コード・データ種別ID(dataspec)・option・ファイル名規則、32bit/64bit 共存仕様(利用キー・
+  ポート・x86/x64 接続先)、C#/Python 構造体定義と固定長 Shift_JIS レコードのパース手法を、変換済み
+  ドキュメントから探して正確に答える。JRA-VAN・JV-Data・JV-Link・競馬データの取得/解析・C#/Python 実装に
+  関する質問では必ずこのスキルを使うこと。レコードの項目位置やバイト数、コードの意味、JVOpen の dataspec/option の指定、
+  エラーコードの意味、32bit版/64bit版の違い、馬毎レース情報(SE)・レース詳細(RA)・払戻(HR)・オッズ(O1〜O6)・票数(H1/H6)・
+  各マスタの構造を聞かれたら、推測せず必ずこのスキルで変換済みドキュメントを参照して回答すること。keibalens など
+  競馬予想ソフトのデータ取り込み実装でも使う。
 ---
 
 # JRA-VAN 仕様ガイド (JV-Data / JV-Link)

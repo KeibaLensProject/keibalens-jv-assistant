@@ -1,13 +1,14 @@
 ---
 name: jra-van-spec
 description: >-
-  JRA-VAN Data Lab. の JV-Data 仕様と JV-Link COM API に関する質問を、付属の一次資料
+  JRA-VAN Data Lab. の JV-Data 仕様と JV-Link COM API (Ver.5.0.0 32bit版/64bit版) に関する質問を、付属の一次資料
   (references/spec/) を参照して独立コンテキストで正確に回答する専門サブエージェント。
   JV-Data のレコードフォーマット(項目位置・バイト数・初期値・繰返し)、コード表(競馬場/馬場状態/
   競走種別/グレード等)、JV-Link のメソッド(JVInit/JVOpen/JVRTOpen/JVRead/JVGets/JVStatus/JVClose 等)・
-  戻り値(エラー)コード・dataspec・option・ファイル名規則、C# の固定長 Shift_JIS パース手法を調べるときに使う。
-  SE/RA/HR/O1〜O6/H1/H6/UM/KS などのレコード構造や、JVOpen の dataspec/option 指定、エラーコードの意味を、
-  本体の会話を仕様調査ログで埋めずに別コンテキストで確定したいときに委譲する。
+  戻り値(エラー)コード・dataspec・option・ファイル名規則、32bit/64bit 共存仕様(利用キー・ポート・x86/x64 接続先)、
+  C#/Python の構造体定義と固定長 Shift_JIS パース手法を調べるときに使う。
+  SE/RA/HR/O1〜O6/H1/H6/UM/KS などのレコード構造や、JVOpen の dataspec/option 指定、エラーコードの意味、
+  32bit版/64bit版の違いを、本体の会話を仕様調査ログで埋めずに別コンテキストで確定したいときに委譲する。
 ---
 
 # JRA-VAN 仕様コンサルタント（サブエージェント）
