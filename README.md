@@ -73,7 +73,32 @@ copilot plugin install KeibaLensProject/keibalens-jv-assistant:plugins/jra-van-s
 ```
 
 導入確認は `/plugin list` ・ `/skills list`。インストール後は、JRA-VAN / JV-Data / JV-Link / 競馬データの
-取得・解析・C# 実装に関する質問で、このスキルが自動的に参照されます。
+取得・解析・C# / Python 実装に関する質問で、このスキルが自動的に参照されます。
+
+### 🔄 アップデート（最新版への更新）
+
+新しいバージョンの仕様やドキュメントが公開されたときは、マーケットプレイスのカタログを更新してからプラグインをアップデートします。
+
+#### 対話セッション内（GitHub Copilot CLI / Claude Code 共通）
+
+```text
+/plugin marketplace update keibalens-jv-assistant
+/plugin update jra-van-spec-skills
+```
+
+#### ターミナル（セッション外）
+
+```shell
+# GitHub Copilot CLI
+copilot plugin marketplace update keibalens-jv-assistant
+copilot plugin update jra-van-spec-skills
+
+# Claude Code
+claude plugin marketplace update keibalens-jv-assistant
+claude plugin update jra-van-spec-skills
+```
+
+> 💡 GitHub Copilot CLI で導入済みの全プラグインを一括更新する場合は `copilot plugin update --all`（または `/plugin update --all`）も使えます。反映にはセッションの再起動が必要です。
 
 ---
 
@@ -155,10 +180,10 @@ keibalens-jv-assistant/
 
 ## 🤖 対応エージェント
 
-| エージェント | 導入方法 |
+| エージェント | 導入・更新方法 |
 |---|---|
-| **GitHub Copilot CLI** | `/plugin marketplace add` → `/plugin install`（上記） |
-| **Claude Code** | 同じ `/plugin` コマンド体系（marketplace add → install）に対応 |
+| **GitHub Copilot CLI** | 導入：`/plugin marketplace add` → `/plugin install`<br>更新：`/plugin marketplace update` → `/plugin update`（上記） |
+| **Claude Code** | 同じ `/plugin` コマンド体系（`marketplace add` → `install` / `marketplace update` → `update`）に対応 |
 
 標準的なプラグイン マニフェスト（`.claude-plugin/marketplace.json` ＋ `.claude-plugin/plugin.json` ＋ `skills/<name>/SKILL.md` ＋ `agents/<name>.agent.md`）形式のため、
 GitHub Copilot CLI と Claude Code の両方で、スキルもサブエージェントもそのまま利用できます。
