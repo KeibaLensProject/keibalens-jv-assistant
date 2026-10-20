@@ -1,8 +1,10 @@
-# C# で JV-Data をパースする
+# C# / Python で JV-Data をパースする
 
 JV-Data の 1 レコードは「レコード種別ごとに長さが固定の Shift_JIS バイト列」。
 レコードフォーマット表の **位置(1 始まり)** と **バイト長** が、そのままバイト切り出しのオフセットになる。
-JRA-VAN 提供の C# 構造体サンプル(`references/spec/jvdata-struct/`)はこの切り出しを実装済みで、ほぼそのまま流用できる。
+JRA-VAN 提供の C# 構造体サンプル(`references/spec/jvdata-struct/`、2009年版)および SDK Ver.5.0.0 で追加された
+Python 構造体サンプル(`references/spec/jvdata-struct-py/`、**2026年版・JV-Data 4.9.0.1 最新オフセット準拠**)は
+この切り出しを実装済みで、ほぼそのまま流用できる。
 
 ## 1. Shift_JIS エンコーディングの登録(.NET 5+ / .NET Core)
 
@@ -100,10 +102,32 @@ switch (recordSpec)
 - 日付項目: `yyyymmdd` / 時刻 `hhmmss` 形式の固定長文字列。`DateTime.ParseExact(s, "yyyyMMdd", ...)` 等で変換。
 - コード項目(競馬場・馬場状態など)は文字列のまま保持し、意味は `references/spec/jv-data-spec/code-tables/` で引く。
 
-## 7. 実装の進め方(おすすめ)
+## 7. Python でのパース (`JVData_Struct.py` / SDK Ver.5.0.0)
+
+SDK Ver.5.0.0 (64bit版) で公式提供された `JVData_Struct.py` (`references/spec/jvdata-struct-py/`) は、
+全 38 レコードを `@dataclass` と `SetDataB(b: bytes)` クラスメソッドで定義しており、**2026年7月31日更新のため
+最新の JV-Data 4.9.0.1 のバイト位置・サイズ（2023年 N付き拡張・2021年 WC 10ハロン拡張を含む）に完全準拠**している。
+
+```python
+def MidB2S(b: bytes, start: int, length: int) -> str:
+    return b[start - 1 : start - 1 + length].decode("shift_jis", errors="ignore")
+
+def MidB2B(b: bytes, start: int, length: int) -> bytes:
+    return b[start - 1 : start - 1 + length]
+
+# JVGets で受け取った memoryview から bytes を取り出してパースする例
+raw: bytes = memview.tobytes()
+rec_spec = MidB2S(raw, 1, 2)
+if rec_spec == "RA":
+    ra = JV_RA_RACE.SetDataB(raw)
+elif rec_spec == "SE":
+    se = JV_SE_RACE_UMA.SetDataB(raw)
+```
+
+## 8. 実装の進め方(おすすめ)
 
 1. 対象レコードを [record-index.md](./record-index.md) で特定し、`record-formats/` で項目を確認する。
-2. `references/spec/jvdata-struct/` の該当構造体の `SetDataB` を出発点にする(切り出し位置が既に書かれている)。
-3. **項目の位置/バイト数は必ず `record-formats/`(4.9.0.1)で照合する**。構造体サンプルは 2009 年版のため、
-   その後拡張された項目(例: 2023 年の繁殖登録番号・生産者コード/名のサイズ拡張)は古いことがある。
-4. 取得フロー(JVInit→JVOpen→JVRead→JVClose)は [jvlink-flow.md](./jvlink-flow.md) を参照。
+2. C# なら `references/spec/jvdata-struct/`、Python なら `references/spec/jvdata-struct-py/` の該当構造体の `SetDataB` を出発点にする。
+3. **項目の位置/バイト数は必ず `record-formats/`(4.9.0.1) または `jvdata-struct-py/`(2026年版) で照合する**。
+   C# 構造体サンプル(`jvdata-struct/`)は 2009 年版のため、その後拡張された項目(2023 年の繁殖登録番号 8→10B・生産者コード 6→8B・生産者名 70→72B、2021 年の WC 10ハロン拡張)は古い。C# でこれらを実装する際も `jvdata-struct-py/` の `SetDataB` オフセットがそのまま参考になる。
+4. 取得フロー(JVInit→JVOpen→JVRead/JVGets→JVClose)は [jvlink-flow.md](./jvlink-flow.md) を参照。

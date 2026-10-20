@@ -1,6 +1,6 @@
 # sample1Dlg2.cpp
 
-出典: `context/sample1_VC2019/sample1Dlg2.cpp`
+出典: `context/sample1_VC2026/sample1Dlg2.cpp`
 
 データ取得ダイアログ。JVOpen→JVStatus→JVRead→JVClose の中核
 
@@ -176,7 +176,7 @@ void CSample1Dlg2::OnButton1()
 //------------------------------------------------------------------------------
 //		タイマー：ダウンロード進捗率をプログレスバー表示
 //------------------------------------------------------------------------------
-void CSample1Dlg2::OnTimer(UINT nIDEvent) 
+void CSample1Dlg2::OnTimer(UINT_PTR nIDEvent) 
 {
 		long ReturnCode;		//JVLink戻り値
 

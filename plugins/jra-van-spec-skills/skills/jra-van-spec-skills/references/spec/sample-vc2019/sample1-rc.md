@@ -1,6 +1,6 @@
 # sample1.rc
 
-出典: `context/sample1_VC2019/sample1.rc`
+出典: `context/sample1_VC2026/sample1.rc`
 
 リソーススクリプト(ダイアログ/メニュー定義)
 

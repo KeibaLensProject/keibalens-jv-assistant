@@ -1,6 +1,6 @@
 # res\html_sam.htm
 
-出典: `context/sample1_VC2019/res/html_sam.htm`
+出典: `context/sample1_VC2026/res/html_sam.htm`
 
 ```html
 <HTML>

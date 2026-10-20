@@ -1,6 +1,6 @@
 # stdafx.cpp
 
-出典: `context/sample1_VC2019/stdafx.cpp`
+出典: `context/sample1_VC2026/stdafx.cpp`
 
 プリコンパイル済みヘッダ
 

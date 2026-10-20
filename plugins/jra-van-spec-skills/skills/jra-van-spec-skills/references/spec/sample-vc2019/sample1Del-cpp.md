@@ -1,6 +1,6 @@
 # sample1Del.cpp
 
-出典: `context/sample1_VC2019/sample1Del.cpp`
+出典: `context/sample1_VC2026/sample1Del.cpp`
 
 ファイル削除処理。JVFiledelete を呼ぶ
 

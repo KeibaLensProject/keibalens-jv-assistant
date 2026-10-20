@@ -1,6 +1,6 @@
 # jvlink.h
 
-出典: `context/sample1_VC2019/jvlink.h`
+出典: `context/sample1_VC2026/jvlink.h`
 
 JV-Link COM ラッパ宣言(IJVLink インターフェース)
 

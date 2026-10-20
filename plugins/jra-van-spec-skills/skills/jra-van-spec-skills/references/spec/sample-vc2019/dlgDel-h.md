@@ -1,6 +1,6 @@
 # dlgDel.h
 
-出典: `context/sample1_VC2019/dlgDel.h`
+出典: `context/sample1_VC2026/dlgDel.h`
 
 削除確認ダイアログのヘッダ
 

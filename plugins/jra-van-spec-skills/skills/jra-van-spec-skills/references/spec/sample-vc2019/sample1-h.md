@@ -1,6 +1,6 @@
 # sample1.h
 
-出典: `context/sample1_VC2019/sample1.h`
+出典: `context/sample1_VC2026/sample1.h`
 
 アプリケーションの中心インクルード
 

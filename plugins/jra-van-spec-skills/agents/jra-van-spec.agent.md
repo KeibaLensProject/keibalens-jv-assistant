@@ -27,16 +27,16 @@ description: >-
 ## 進め方
 
 1. 質問の種類を見分ける（レコードフォーマット / コード表 / JV-Link メソッド / エラーコード /
-   dataspec・option / ファイル名規則 / C# 構造体 / パース手法 / 取得フロー）。
+   JV-Link 64bit・32bit仕様 / dataspec・option / ファイル名規則 / C#・Python 構造体 / パース手法 / 取得フロー）。
 2. `jra-van-spec-skills` スキルのルーティング表に従い、開くべき `references/spec/` のファイルを決める。
 3. 当該ファイルを開き、**位置（1 始まり）／バイト数／初期値／コード値／引数／戻り値** などの一次情報を確認する。
-4. 必要なら関連ファイル（コード表・構造体サンプル・データ種別・データ提供タイミング）も併せて確認する。
+4. 必要なら関連ファイル（コード表・C#/Python 構造体サンプル・データ種別・データ提供タイミング）も併せて確認する。
 
 ## 回答形式
 
 - 結論を先に簡潔に述べ、続けて根拠（参照したファイルのパスと該当項目）を示す。
 - 参照したファイルパス（例: `references/spec/jv-data-spec/record-formats/<連番>-<ID>-<名称>.md`）を必ず明記する。
-- C# 実装が絡む場合は、Shift_JIS のエンコーディング登録・`MidB2S` による切り出し・繰返し項目・
+- C# / Python 実装が絡む場合は、Shift_JIS(cp932) のエンコーディング扱い・`MidB2S` による切り出し・繰返し項目・
   未知レコードのスキップといった要点を添える。
 - 本体エージェントがそのまま続行できるよう、**確定した事実だけ** を返し、調査の途中ログは含めない。
 
@@ -45,6 +45,6 @@ description: >-
 - レコードの項目位置／バイト数 → `references/spec/jv-data-spec/record-formats/`
 - コードの意味（競馬場・馬場状態・競走種別・グレード等） → `references/spec/jv-data-spec/code-tables/`
 - JV-Link メソッドの引数／戻り値 → `references/spec/jvlink-interface/methods/`、戻り値（エラー）コード → `references/spec/jvlink-interface/code-table.md`
-- dataspec / option・取得フロー → スキルの `references/dataspec-option.md` ／ `references/jvlink-flow.md`
-- C# の固定長パース手法 → スキルの `references/csharp-parsing.md`
+- dataspec / option・取得フロー・JV-Link Ver.5.0.0(64bit/32bit)仕様 → スキルの `references/dataspec-option.md` ／ `references/jvlink-flow.md`
+- C# / Python の固定長パース手法・構造体 → スキルの `references/csharp-parsing.md`、`references/spec/jvdata-struct/`(C# 2009年版)、`references/spec/jvdata-struct-py/`(Python 2026年版・4.9.0.1準拠)
 - レコード種別 ID から引く早見表 → スキルの `references/record-index.md`
