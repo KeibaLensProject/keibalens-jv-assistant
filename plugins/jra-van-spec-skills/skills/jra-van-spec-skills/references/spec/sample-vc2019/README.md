@@ -1,6 +1,6 @@
-# JRA-VAN サンプルプログラム sample1 (C++ / MFC, VC2019)
+# JRA-VAN サンプルプログラム sample1 (C++ / MFC, VC2026 / VC2019)
 
-出典: `context/sample1_VC2019/`
+出典: `context/sample1_VC2026/`
 
 JRA-VAN 公式の C++ (MFC) サンプルです。**JV-Link の呼び出しフロー**(初期化→取得要求→進捗→読み込み→終了)を示しており、C# 実装時の処理順序・エラーハンドリングの参考になります。
 

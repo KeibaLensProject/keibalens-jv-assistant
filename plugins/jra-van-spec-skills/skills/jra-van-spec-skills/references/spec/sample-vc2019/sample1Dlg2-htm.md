@@ -1,6 +1,6 @@
 # sample1Dlg2.htm
 
-出典: `context/sample1_VC2019/sample1Dlg2.htm`
+出典: `context/sample1_VC2026/sample1Dlg2.htm`
 
 ```html
 <HTML>

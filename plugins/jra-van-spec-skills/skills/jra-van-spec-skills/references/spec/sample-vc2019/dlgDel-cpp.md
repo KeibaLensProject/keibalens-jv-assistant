@@ -1,6 +1,6 @@
 # dlgDel.cpp
 
-出典: `context/sample1_VC2019/dlgDel.cpp`
+出典: `context/sample1_VC2026/dlgDel.cpp`
 
 削除確認ダイアログ
 

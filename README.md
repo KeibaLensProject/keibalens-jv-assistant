@@ -9,9 +9,10 @@
 
 [![GitHub Copilot CLI](https://img.shields.io/badge/GitHub%20Copilot%20CLI-plugin-000000?logo=githubcopilot&logoColor=white)](https://github.com/github/copilot-cli)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97757?logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code)
-![Plugin](https://img.shields.io/badge/plugin-v1.0.0-1f6feb)
-![JV-Data](https://img.shields.io/badge/JV--Data-4.9.0.x-2ea44f)
-![JV-Link](https://img.shields.io/badge/JV--Link-4.9.0.x-2ea44f)
+![Plugin](https://img.shields.io/badge/plugin-v1.1.0-1f6feb)
+![SDK](https://img.shields.io/badge/SDK-5.0.0-2ea44f)
+![JV-Data](https://img.shields.io/badge/JV--Data-4.9.0.1-2ea44f)
+![JV-Link](https://img.shields.io/badge/JV--Link-5.0.0%20(64bit%2F32bit)-2ea44f)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 </div>
@@ -21,7 +22,7 @@
 ## これは何？
 
 `keibalens-jv-assistant` は、**JRA-VAN Data Lab.** 対応ソフトを開発するときに必要になる
-**JV-Data 仕様（レコードフォーマット／コード表）** と **JV-Link COM API（メソッド・エラーコード・dataspec・option）** を、
+**JV-Data 仕様（レコードフォーマット／コード表）** と **JV-Link COM API（メソッド・エラーコード・dataspec・option・64bit/32bit仕様）** を、
 AI エージェントが正確に参照できるようにする **Agent Plugin** です。
 
 GitHub Copilot CLI / Claude Code などにインストールすると、JRA-VAN・競馬データに関する質問で
@@ -36,13 +37,13 @@ GitHub Copilot CLI / Claude Code などにインストールすると、JRA-VAN�
 
 - 📐 **全 38 レコード種別** の項目を一次資料から回答 — 位置（1始まり）・バイト数・初期値・繰返し・キー項目
 - 🔢 **19 種のコード表** を即引き — 競馬場 / 馬場状態 / 競走種別 / グレード など
-- 🔌 **JV-Link COM API 24 メソッド** — `JVInit` / `JVOpen` / `JVRTOpen` / `JVRead` / `JVGets` / `JVStatus` / `JVWatchEvent` / `JVClose` の引数・戻り値・エラーコード
+- 🔌 **JV-Link COM API 24 メソッド（Ver.5.0.0 64bit/32bit対応）** — `JVInit` / `JVOpen` / `JVRTOpen` / `JVRead` / `JVGets` / `JVStatus` / `JVWatchEvent` / `JVClose` の引数・戻り値・エラーコード・32bit/64bit 共存仕様（利用キー・ポート・設定画面）
 - 🧭 **dataspec / option 早見** — 蓄積系（`JVOpen`）・速報系（`JVRTOpen`）・イベント（`JVWatchEvent`）の使い分け
-- 💻 **C# 実装ガイド** — Shift_JIS 固定長レコードのパース（エンコーディング登録・`MidB2S`・繰返し項目・未知レコードのスキップ）
-- 🎯 **自動発火** — JRA-VAN / JV-Data / JV-Link / 競馬データ取得・解析・C# 実装の質問でスキルが自動的に参照される
+- 💻 **C# / Python 実装ガイド＆構造体定義** — Shift_JIS 固定長レコードのパース（C# `MidB2S`・Python `@dataclass` `JVData_Struct.py`（2026年版・4.9.0.1 最新オフセット準拠）・`pywin32` 連携）
+- 🎯 **自動発火** — JRA-VAN / JV-Data / JV-Link / 競馬データ取得・解析・C# / Python 実装の質問でスキルが自動的に参照される
 - 🤝 **サブエージェント同梱** — `jra-van-spec` を `/agents` から呼び出し／委譲でき、仕様調査を**別コンテキスト**で実行（本筋の会話を汚さない）
 
-> 📚 収録ドキュメント：**158 ファイル**（レコードフォーマット 38・コード表 19・JV-Link メソッド 24・C# 構造体 38・開発ガイド／サンプル ほか）
+> 📚 収録ドキュメント：**201 ファイル**（レコードフォーマット 38・コード表 19・JV-Link メソッド 24・C# 構造体 38・Python 構造体 38・開発ガイド 4.2.3／イベント C++ & Python／サンプル VC2026 & Python 3.14 ほか）
 
 ---
 
@@ -82,7 +83,8 @@ copilot plugin install KeibaLensProject/keibalens-jv-assistant:plugins/jra-van-s
 「SE レコードの確定着順は何バイト目？」
 「当日のリアルタイムオッズを取る dataspec は？」
 「JVOpen が -202 を返す原因は？」
-「O2（馬連オッズ）を C# でパースする方法は？」
+「O2（馬連オッズ）を C# / Python でパースする方法は？」
+「64bit 版と 32bit 版の JV-Link を共存させるときの利用キーや注意点は？」
 「速報のみのレコード（WH/WE/AV/JC/TC/CC）はどう取得する？」
 「RA / SE / HR / O1〜O6 / H1 / H6 の構造とレコード長を教えて」
 ```
@@ -136,13 +138,15 @@ keibalens-jv-assistant/
             └─ references/
                ├─ record-index.md      #       全 38 レコード 統合早見表
                ├─ dataspec-option.md   #       dataspec / option 早見
-               ├─ csharp-parsing.md    #       C# パース実装ガイド
-               ├─ jvlink-flow.md       #       JV-Link 呼び出しフロー
-               └─ spec/                #       仕様ドキュメント（一次資料・158 ファイル）
+               ├─ csharp-parsing.md    #       C# / Python パース実装ガイド
+               ├─ jvlink-flow.md       #       JV-Link 呼び出しフロー＆Ver.5.0.0(64bit/32bit)仕様
+               └─ spec/                #       仕様ドキュメント（一次資料・201 ファイル）
                   ├─ jv-data-spec/     #         レコードフォーマット 38 / コード表 19 ほか
                   ├─ jvlink-interface/ #         JV-Link メソッド 24・プロパティ・コード表
-                  ├─ jvdata-struct/    #         C# 構造体サンプル（38）
-                  └─ sample-vc2019/    #         C++/MFC 呼び出しフロー実例
+                  ├─ jvdata-struct/    #         C# 構造体サンプル（38・2009年版）
+                  ├─ jvdata-struct-py/ #         Python 構造体サンプル（38・2026年版 4.9.0.1準拠）
+                  ├─ sample-vc2019/    #         C++/MFC 呼び出しフロー実例（VC2026）
+                  └─ sample-python/    #         Python 3.14 呼び出しフロー実例（pywin32）
 ```
 
 スキルは一次資料 `references/spec/` を内包して **自己完結** しているため、配布物はそれ単体で動作します。

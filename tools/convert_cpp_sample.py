@@ -1,4 +1,4 @@
-"""context/sample1_VC2019 (C++ MFC サンプル) -> references/spec/sample-vc2019/ (Markdown)。
+"""context/sample1_VC2026 (または sample1_VC2019) -> references/spec/sample-vc2019/ (Markdown)。
 
 JV-Link の呼び出しフロー(JVInit→JVOpen→JVStatus→JVRead→JVClose 等)を示す
 JRA-VAN 公式サンプル。C# 実装時の処理順序の参考にする。ソース(.cpp/.h)と
@@ -15,7 +15,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPEC = os.path.join(ROOT, "plugins", "jra-van-spec-skills", "skills",
                     "jra-van-spec-skills", "references", "spec")
-SRC = os.path.join(ROOT, "context", "sample1_VC2019")
+SRC_DIR_NAME = ("sample1_VC2026"
+                if os.path.isdir(os.path.join(ROOT, "context", "sample1_VC2026"))
+                else "sample1_VC2019")
+SRC = os.path.join(ROOT, "context", SRC_DIR_NAME)
 OUT = os.path.join(SPEC, "sample-vc2019")
 
 CONVERT_EXT = {".cpp": "cpp", ".h": "cpp", ".txt": "text",
@@ -101,7 +104,7 @@ def main():
             role = ROLES.get(rel.replace(os.sep, "\\").split("\\")[-1], "")
             fence = "~~~" if "```" in text else "```"
             body = (f"# {rel}\n\n"
-                    f"出典: `context/sample1_VC2019/{rel.replace(os.sep, '/')}`\n\n"
+                    f"出典: `context/{SRC_DIR_NAME}/{rel.replace(os.sep, '/')}`\n\n"
                     + (f"{role}\n\n" if role else "")
                     + f"{fence}{lang}\n{text}\n{fence}\n")
             write(os.path.join(OUT, mdname), body)
@@ -112,9 +115,9 @@ def main():
                         usage[m].append((rel, i))
 
     # README
-    md = ["# JRA-VAN サンプルプログラム sample1 (C++ / MFC, VC2019)",
+    md = ["# JRA-VAN サンプルプログラム sample1 (C++ / MFC, VC2026 / VC2019)",
           "",
-          "出典: `context/sample1_VC2019/`",
+          f"出典: `context/{SRC_DIR_NAME}/`",
           "",
           "JRA-VAN 公式の C++ (MFC) サンプルです。**JV-Link の呼び出しフロー**"
           "(初期化→取得要求→進捗→読み込み→終了)を示しており、C# 実装時の"

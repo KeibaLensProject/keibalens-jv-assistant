@@ -1,6 +1,6 @@
 # stdafx.h
 
-出典: `context/sample1_VC2019/stdafx.h`
+出典: `context/sample1_VC2026/stdafx.h`
 
 共通インクルード
 

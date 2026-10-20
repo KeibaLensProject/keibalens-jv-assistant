@@ -1,6 +1,6 @@
 # jvlink.cpp
 
-出典: `context/sample1_VC2019/jvlink.cpp`
+出典: `context/sample1_VC2026/jvlink.cpp`
 
 JV-Link COM ラッパ実装(#import 生成)
 

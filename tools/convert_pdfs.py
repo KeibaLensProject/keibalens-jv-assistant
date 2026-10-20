@@ -1,8 +1,9 @@
 """PDF ガイド類 -> references/spec/ (Markdown)。
 
 対象:
-  - JRA-VAN Data Lab.開発ガイド_4.2.2.pdf            -> references/spec/dev-guide.md
+  - JRA-VAN Data Lab.開発ガイド_4.2.3.pdf            -> references/spec/dev-guide.md
   - JRA-VAN Data Lab.開発ガイド(イベント C++).pdf    -> references/spec/dev-guide-event-cpp.md
+  - JRA-VAN Data Lab.開発ガイド(イベント Python).pdf -> references/spec/dev-guide-event-python.md
   - JV-Data仕様書_4.9.0.1.pdf                         -> references/spec/jv-data-spec/source-pdf.md (補助)
 
 開発ガイドは見出しを検出して構造化:
@@ -199,16 +200,27 @@ def convert_jvdata_pdf():
 
 
 def main():
+    dev_guide_pdf = "JRA-VAN Data Lab.開発ガイド_4.2.3.pdf"
+    if not os.path.exists(os.path.join(CTX, dev_guide_pdf)):
+        dev_guide_pdf = "JRA-VAN Data Lab.開発ガイド_4.2.2.pdf"
     n1, h1 = convert_guide(
-        "JRA-VAN Data Lab.開発ガイド_4.2.2.pdf", "dev-guide.md",
+        dev_guide_pdf, "dev-guide.md",
         "JRA-VAN Data Lab. SDK 開発ガイド",
         "JV-Link を使った競馬ソフト開発の手引きです。開発環境・SDK インストール・"
-        "JV-Data 取得の概念・プログラミング手順(C#/VB)を解説します。")
+        "JV-Data 取得の概念・プログラミング手順(C#/VB/Python・64bit対応)を解説します。")
     n2, h2 = convert_guide(
         "JRA-VAN Data Lab.開発ガイド(イベント C++).pdf", "dev-guide-event-cpp.md",
         "JRA-VAN Data Lab. SDK 開発ガイド(イベント C++)",
         "JV-Link のイベント通知(確定・変更情報の受信)を C++ で扱う手引きです。"
         "`JVWatchEvent` を用いたイベント駆動の実装手順を解説します。")
+    py_event_pdf = "JRA-VAN Data Lab.開発ガイド(イベント Python).pdf"
+    if os.path.exists(os.path.join(CTX, py_event_pdf)):
+        n_py, h_py = convert_guide(
+            py_event_pdf, "dev-guide-event-python.md",
+            "JRA-VAN Data Lab. SDK 開発ガイド(イベント Python)",
+            "JV-Link のイベント通知(確定・変更情報の受信)を Python (`pywin32`) で扱う手引きです。"
+            "`JVWatchEvent` と `DispatchWithEvents` を用いたイベント駆動の実装手順を解説します。")
+        print(f"dev-guide-event-python.md: {n_py}p, {h_py} headings")
     n3 = convert_jvdata_pdf()
     print(f"dev-guide.md: {n1}p, {h1} headings")
     print(f"dev-guide-event-cpp.md: {n2}p, {h2} headings")

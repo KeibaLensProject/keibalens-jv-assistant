@@ -1,6 +1,6 @@
 # ReadMe.txt
 
-出典: `context/sample1_VC2019/ReadMe.txt`
+出典: `context/sample1_VC2026/ReadMe.txt`
 
 プロジェクト構成の概要(AppWizard 生成)
 

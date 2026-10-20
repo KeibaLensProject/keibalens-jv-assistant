@@ -1,6 +1,6 @@
 # sample1Dlg2.h
 
-出典: `context/sample1_VC2019/sample1Dlg2.h`
+出典: `context/sample1_VC2026/sample1Dlg2.h`
 
 データ取得ダイアログのヘッダ
 
@@ -66,7 +66,7 @@ protected:
 	//{{AFX_MSG(CSample1Dlg2)
 	afx_msg void OnButton1();
 	afx_msg void OnButton2();
-	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

@@ -1,6 +1,6 @@
 # resource.h
 
-出典: `context/sample1_VC2019/resource.h`
+出典: `context/sample1_VC2026/resource.h`
 
 リソース ID 定義
 

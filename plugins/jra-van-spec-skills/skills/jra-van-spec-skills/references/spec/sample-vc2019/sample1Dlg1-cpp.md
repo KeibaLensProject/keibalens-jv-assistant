@@ -1,6 +1,6 @@
 # sample1Dlg1.cpp
 
-出典: `context/sample1_VC2019/sample1Dlg1.cpp`
+出典: `context/sample1_VC2026/sample1Dlg1.cpp`
 
 設定ダイアログ。JVInit / JVSetUIProperties を呼ぶ
 

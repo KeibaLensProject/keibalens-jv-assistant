@@ -1,6 +1,6 @@
 # sample1.cpp
 
-出典: `context/sample1_VC2019/sample1.cpp`
+出典: `context/sample1_VC2026/sample1.cpp`
 
 アプリケーションクラス CSample1App(エントリポイント)
 
@@ -78,7 +78,7 @@ BOOL CSample1App::InitInstance()
 
 	CSample1Dlg1 dlg;
 	m_pMainWnd = &dlg;
-	int nResponse = dlg.DoModal();
+	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
 	{
 		// TODO: ダイアログが <OK> で消された時のコードを
